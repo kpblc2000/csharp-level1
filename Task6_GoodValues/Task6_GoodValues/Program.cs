@@ -20,7 +20,7 @@ namespace Task6_GoodValues
 		{
 			Int64 counter = 0;
 			int startValue = 1;
-			int finalValue = (int)1e7;
+			int finalValue = (int)1e9;
 			DateTime startTime = DateTime.Now;
 			for (int i = startValue; i < finalValue; i++)
 			{
