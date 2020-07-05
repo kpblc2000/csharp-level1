@@ -28,8 +28,7 @@ namespace Task1_Min3
 		{
 			double res;
 			res = Value1 < Value2 ? Value1 : Value2;
-			res = res < Value3 ? res : Value3;
-			return res;
+			return res < Value3 ? res : Value3;
 		}
 	}
 }
