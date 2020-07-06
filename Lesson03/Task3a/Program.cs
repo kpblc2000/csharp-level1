@@ -226,7 +226,7 @@ namespace Task3a
 			}
 
 			Console.WriteLine("Summ = {0:N4}", sum);
-			Console.WriteLine("Multiple = {0:N4}; value== {1:N4}", multi, multi.Value);
+			Console.WriteLine("Multiple = {0}; value== {1:N4}", multi, multi.Value);
 
 			Console.ReadKey();
 		}
