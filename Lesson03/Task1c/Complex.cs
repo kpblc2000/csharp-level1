@@ -36,36 +36,35 @@ namespace kpblc
 		public double Im { get { return _im; } set { _im = value; } }
 		public override string ToString()
 		{
-			return "(" + _real + (_im < 0 ? "" : "+") + _im + "i)";
+			if (_im == 0)
+			{
+				return _real.ToString();
+			}
+			else if (_im < 0)
+			{
+				return $"{_real}{_im}i";
+			}
+			else
+			{
+				return $"{_real}+{_im}i";
+			}
 		}
-		public Complex Plus(Complex Value)
+
+		public static Complex operator +(Complex Value1, Complex Value2)
 		{
-			return new Complex(Value.Real + _real, Value.Im + _im);
+			return new Complex(Value1.Real + Value2.Real, Value1.Im + Value2.Im);
 		}
-		public Complex Plus(double Value)
+
+		public static Complex operator -(Complex Value1, Complex Value2)
 		{
-			return Plus(new Complex(Value));
+			return new Complex(Value1.Real - Value2.Real, Value1.Im - Value2.Im);
 		}
-		public Complex Plus(int Value)
+
+		public static Complex operator *(Complex Value1, Complex Value2)
 		{
-			return Plus((double)Value);
+			return new Complex(Value1.Real * Value2.Real - Value1.Im * Value2.Im, Value1.Real * Value2.Im + Value2.Real * Value1.Im);
 		}
-		public Complex Minus(Complex Value)
-		{
-			return new Complex(_real - Value.Real, _im - Value.Im);
-		}
-		public Complex Minus(double Value)
-		{
-			return Minus(new Complex(Value));
-		}
-		public Complex Minus(int Value)
-		{
-			return Minus((double)Value);
-		}
-		public Complex Multiple(Complex Value)
-		{
-			return new Complex(_real * Value.Real - _im * Value.Im, _real * Value.Im + Value.Real * _im);
-		}
+
 	}
 
 }

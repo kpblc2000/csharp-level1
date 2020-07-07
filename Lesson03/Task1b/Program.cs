@@ -40,13 +40,14 @@ namespace Task1b
 					"\n\t{0} - {1} = {3}" +
 					"\n\t{1} - {0} = {4}" +
 					"\n\t{0} * {1} = {5}",
-					ar[i], operand, ar[i].Plus(operand),
-					ar[i].Minus(operand),
-					operand.Minus(ar[i]),
-					ar[i].Multiple(operand)
+					ar[i], operand, ar[i]+(operand),
+					ar[i]-(operand),
+					operand-(ar[i]),
+					ar[i]* (operand)
 					);
 			}
 
+			Console.WriteLine("Нажмите любую клавишу для выхода");
 			Console.ReadKey();
 		}
 	}

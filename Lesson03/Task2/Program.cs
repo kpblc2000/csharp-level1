@@ -17,7 +17,6 @@ namespace Task2
 		/// Запрашивает у пользователя число, проверяет
 		/// </summary>
 		/// <param name="Message"></param>
-		/// <param name="AllowValues"></param>
 		/// <returns></returns>
 		static int GetValue(string Message)
 		{
@@ -39,7 +38,7 @@ namespace Task2
 			int sum = 0;
 			do
 			{
-				answer = GetValue("Введите число (0 = выход) : ");
+				answer = GetValue("Введите целое число (0 = выход) : ");
 				if (answer > 0 && (answer % 2 == 1))
 				{
 					sum += answer;

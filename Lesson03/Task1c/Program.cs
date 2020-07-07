@@ -18,7 +18,6 @@ namespace Task1c
 		/// Запрашивает у пользователя число, проверяет
 		/// </summary>
 		/// <param name="Message"></param>
-		/// <param name="AllowValues"></param>
 		/// <returns></returns>
 		static int GetValue(string Message)
 		{
@@ -57,16 +56,16 @@ namespace Task1c
 			switch (answer)
 			{
 				case 1:
-					Console.WriteLine("{0} + {1} = {2}", val1, val2, val1.Plus(val2));
+					Console.WriteLine("{0} + {1} = {2}", val1, val2, val1 + val2);
 					break;
 				case 2:
-					Console.WriteLine("{0} - {1} = {2}", val1, val2, val1.Minus(val2));
+					Console.WriteLine("{0} - {1} = {2}", val1, val2, val1 - val2);
 					break;
 				case 3:
-					Console.WriteLine("{0} - {1} = {2}", val2, val1, val2.Minus(val1));
+					Console.WriteLine("{0} - {1} = {2}", val2, val1, val2 - val1);
 					break;
 				case 4:
-					Console.WriteLine("{0} * {1} = {2}", val1, val2, val1.Multiple(val2));
+					Console.WriteLine("{0} * {1} = {2}", val1, val2, val1 * val2);
 					break;
 				default:
 					Console.WriteLine("Выход...");
