@@ -8,7 +8,12 @@ namespace Task4
 {
 	class Program
 	{
-		static void Main(string[] args)
+		/// <summary>
+		/// Алексей Кулик kpblc2000@yandex.ru
+		/// Урок 4, Задача 4
+		/// Решить задачу с логинами из урока 2, только логины и пароли считать из файла в массив. Создайте структуру Account, содержащую Login и Password.
+		/// </summary>
+		static void Main()
 		{
 			Account acc = new Account("..\\..\\LoginPwd.txt");
 			if (string.IsNullOrEmpty(acc.Login) || string.IsNullOrEmpty(acc.Password))
