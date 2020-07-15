@@ -38,6 +38,7 @@ namespace Task1
 
 			Console.WriteLine($"Количество пар : {coupleRange}");
 
+			Console.WriteLine("Нажмите любую клавишу");
 			Console.ReadKey();
 
 		}

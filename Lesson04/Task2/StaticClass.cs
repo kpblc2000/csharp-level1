@@ -3,6 +3,10 @@ using System.IO;
 
 namespace Task2
 {
+	/// <summary>
+	/// Алексей Кулик kpblc2000@yandex.ru
+	/// Урок 4, задача 2
+	/// </summary>
 	static class StaticClass
 	{
 
@@ -39,21 +43,20 @@ namespace Task2
 		{
 			if (File.Exists(FileName))
 			{
-
-				StreamReader sr = new StreamReader(FileName);
-
 				int[] fileArr = new int[0];
-				int x;
-				while (!sr.EndOfStream)
-				{
-					if (int.TryParse(sr.ReadLine(), out x))
+				using (StreamReader sr = new StreamReader(FileName))
+				{					
+					int x;
+					while (!sr.EndOfStream)
 					{
-						Array.Resize(ref fileArr, fileArr.Length + 1);
-						fileArr[fileArr.Length - 1] = x;
+						if (int.TryParse(sr.ReadLine(), out x))
+						{
+							Array.Resize(ref fileArr, fileArr.Length + 1);
+							fileArr[fileArr.Length - 1] = x;
+						}
 					}
 				}
 
-				sr.Close();
 				return fileArr;
 			}
 			else

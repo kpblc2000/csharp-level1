@@ -8,6 +8,12 @@ namespace Task3
 		private int[] _array;
 		private int _len;
 
+		/// <summary>
+		/// Создание массива целых чисел, начиная с определенного числа и с указанным шагом
+		/// </summary>
+		/// <param name="ArrayRange">Размер создаваемого массива</param>
+		/// <param name="StartValue">Начальное значение</param>
+		/// <param name="Step">Шаг заполнения массива</param>
 		public VectorArray(int ArrayRange, int StartValue = 0, int Step = 1)
 		{
 			_array = new int[ArrayRange];
@@ -20,6 +26,9 @@ namespace Task3
 			}
 		}
 
+		/// <summary>
+		/// Длина внутреннего массива
+		/// </summary>
 		public int Length { get { return _len; } }
 
 		public int this[int i] { get { return _array[i]; } set { _array[i] = value; } }
@@ -35,6 +44,9 @@ namespace Task3
 			return res;
 		}
 
+		/// <summary>
+		/// Сумма всех чисел массива
+		/// </summary>
 		public int Sum
 		{
 			get
@@ -48,6 +60,11 @@ namespace Task3
 			}
 		}
 
+		/// <summary>
+		/// Изменение знака всех элементов массива
+		/// </summary>
+		/// <param name="IncomeArray"></param>
+		/// <returns></returns>
 		public int[] Inverse(VectorArray IncomeArray)
 		{
 			int[] res = new int[IncomeArray.Length];
@@ -58,6 +75,11 @@ namespace Task3
 			return res;
 		}
 
+		/// <summary>
+		/// Умножение всех элементов массива на указанное число
+		/// </summary>
+		/// <param name="Scale">На сколько умножать элементы массива</param>
+		/// <returns></returns>
 		public int[] Multi(int Scale)
 		{
 			for (int i = 0; i < _len; i++)
@@ -67,6 +89,9 @@ namespace Task3
 			return _array;
 		}
 
+		/// <summary>
+		/// Количество максимальных элементов в массиве
+		/// </summary>
 		public int MaxCount
 		{
 			get

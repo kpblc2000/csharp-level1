@@ -22,9 +22,9 @@ namespace Task3
 		static void Main(string[] args)
 		{
 			#region Использование конструктора с размером массива, начальным значением, шагом
-			VectorArray arr = new VectorArray(20);
+			// VectorArray arr = new VectorArray(20);
 			// VectorArray arr = new VectorArray(10, 20);
-			// VectorArray arr = new VectorArray(10, -5, 3);
+			VectorArray arr = new VectorArray(10, -5, 3);
 			#endregion
 
 			Console.WriteLine($"Начальный массив : {arr}");

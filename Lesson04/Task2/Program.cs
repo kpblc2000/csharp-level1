@@ -38,7 +38,7 @@ namespace Task2
 			}
 			Console.WriteLine();
 			#region Решение задачи 1 через статический класс
-			Console.WriteLine("Количество пар соседей, где хотя бы один из них нацело делится на 3:");
+			Console.WriteLine("Решение статическим классом\nКоличество пар соседей, где хотя бы один из них нацело делится на 3:");
 			Console.WriteLine(StaticClass.ReturnTriplePairs(arr));
 			#endregion
 
