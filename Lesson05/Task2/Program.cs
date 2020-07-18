@@ -20,18 +20,13 @@ namespace Task2
 			}
 			Console.WriteLine(c1 == b1);
 
-			string msg = "Проверка работы обработки";
+			string msg = "Проверка работы обработки и работы";
 			string[] shortRes = Message.GetWordsShorter(msg, 8);
 
 			foreach (string item in msg.Split(new char[] { ' ' }))
 			{
 				Console.WriteLine("{0} -> {1}", item, item.Length);
 			}
-
-			//foreach (string elem in msg.Split(new char[] { ' ' })) ;
-			//{
-			//	Console.WriteLine($"{elem} -> {elem.Length}");
-			//}
 
 			foreach (string item in shortRes)
 			{
@@ -41,8 +36,9 @@ namespace Task2
 			Console.WriteLine($"Без оканчивающихся на 'и' : {Message.EraseWordsEndedWith(msg, 'и')}");
 			Console.WriteLine($"Самое длинное слово : {Message.GetLongestWord(msg)}");
 			Console.WriteLine($"Слова длиннее 6 символов : {Message.LongerWords(msg, 6)}");
+			Console.WriteLine($"Самые длинные слова : {Message.LongerWords(msg)}");
 
-
+	
 
 			Console.ReadKey();
 		}
@@ -139,14 +135,62 @@ namespace Task2
 				if (item.Length > MinLen)
 				{
 					if (sb.Length == 0)
-					{
 						sb.Append(item);
-					}
 					else
 						sb.Append(" " + item);
 				}
 			}
 			return sb.ToString();
+		}
+
+		/// <summary>
+		/// Составление новой строки на основании самых длинных слов в предложении.
+		/// Слова разделяются пробелами. В расчете длины слова участвуют знаки препинания
+		/// </summary>
+		/// <param name="Phrase">Обрабатываемая строка</param>
+		/// <returns>Строка из самых длинных слов, разделенных пробелами</returns>
+		public static string LongerWords(string Phrase)
+		{
+			int len = GetLongestWord(Phrase).Length;
+			StringBuilder sb = new StringBuilder();
+			foreach (string item in Phrase.Split(new char[] { ' ' }))
+			{
+				if (item.Length == len)
+				{
+					if (sb.Length == 0)
+						sb.Append(item);
+					else
+						sb.Append(" " + item);
+				}
+			}
+			return sb.ToString();
+		}
+
+		/// <summary>
+		/// производит частотный анализ текста. В качестве параметра в него передается массив слов и текст, в качестве результата метод возвращает сколько раз каждое из слов массива входит в этот текст.
+		/// </summary>
+		/// <param name="Phrase"></param>
+		/// <param name="StringArray"></param>
+		/// <returns></returns>
+		public static Dictionary<string, int> FreqAnalytics(string Phrase, string[] StringArray)
+		{
+			string[] phrArray = Phrase.ToLower().Split(new char[] { ' ' });
+			Dictionary<string, int> dict = new Dictionary<string, int>();
+
+			
+
+			for (int i = 0; i < phrArray.Length; i++)
+			{
+				if (dict.ContainsKey(phrArray[i].ToLower()))
+				{
+					dict[phrArray[i]] += 1;
+				}
+				else
+				{
+					dict.Add(phrArray[i], 1);
+				}
+			}
+			return dict;
 		}
 	}
 }
