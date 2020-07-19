@@ -11,22 +11,20 @@ namespace Task2
 		static void Main(string[] args)
 		{
 
-			string a1 = "abcd";
-			string b1 = "dcba";
-			string c1 = "";
-			foreach (var item in a1.Reverse())
-			{
-				c1 += item;
-			}
-			Console.WriteLine(c1 == b1);
-
 			string msg = "Проверка работы обработки и работы";
+
+			int lim = 8;
+
+			Console.WriteLine($"Нахождение слов короче {lim} символов");
 			string[] shortRes = Message.GetWordsShorter(msg, 8);
 
+#if DEBUG
+			Console.WriteLine("Длины имеющихся слов");
 			foreach (string item in msg.Split(new char[] { ' ' }))
 			{
 				Console.WriteLine("{0} -> {1}", item, item.Length);
 			}
+#endif
 
 			foreach (string item in shortRes)
 			{
@@ -35,11 +33,28 @@ namespace Task2
 
 			Console.WriteLine($"Без оканчивающихся на 'и' : {Message.EraseWordsEndedWith(msg, 'и')}");
 			Console.WriteLine($"Самое длинное слово : {Message.GetLongestWord(msg)}");
-			Console.WriteLine($"Слова длиннее 6 символов : {Message.LongerWords(msg, 6)}");
+			lim = 6;
+			Console.WriteLine($"Слова длиннее {lim} символов : {Message.LongerWords(msg, lim)}");
 			Console.WriteLine($"Самые длинные слова : {Message.LongerWords(msg)}");
+			Console.WriteLine("Частотный анализ текста");
 
-	
+			msg = "мама мыла раму мама любит машу маша любит кашу";
+			string[] freqData = new string[] { "мама", "любит", "маша" };
 
+			Dictionary<string, int> dict = Message.FreqAnalytics(msg, freqData);
+			Console.WriteLine($"Проверяемая строка : {msg}");
+			Console.WriteLine("Массив для анализа :");
+			for (int i = 0; i < freqData.Length; i++)
+			{
+				Console.Write(freqData[i] + " ");
+			}
+			Console.WriteLine();
+			foreach (var item in dict)
+			{
+				Console.WriteLine($"{item.Key} -> {item.Value} вхождений");
+			}
+
+			Console.WriteLine("Нажмите любую клавишу");
 			Console.ReadKey();
 		}
 	}
@@ -167,30 +182,31 @@ namespace Task2
 		}
 
 		/// <summary>
-		/// производит частотный анализ текста. В качестве параметра в него передается массив слов и текст, в качестве результата метод возвращает сколько раз каждое из слов массива входит в этот текст.
+		/// Производит частотный анализ текста.
 		/// </summary>
-		/// <param name="Phrase"></param>
-		/// <param name="StringArray"></param>
-		/// <returns></returns>
+		/// <param name="Phrase">Текст, для которого надо провести частотный анализ</param>
+		/// <param name="StringArray">Перечень слов, частота вхождения которых выводится в качестве результата</param>
+		/// <returns>Количество вхождений каждого слова из <paramref name="StringArray"/> в <paramref name="Phrase"/>. Регистр при обработке игнорируется</returns>
 		public static Dictionary<string, int> FreqAnalytics(string Phrase, string[] StringArray)
 		{
 			string[] phrArray = Phrase.ToLower().Split(new char[] { ' ' });
-			Dictionary<string, int> dict = new Dictionary<string, int>();
 
-			
+			Dictionary<string, int> res = new Dictionary<string, int>();
+
+			for (int i = 0; i < StringArray.Length; i++)
+			{
+				if (!res.ContainsKey(StringArray[i]))
+					res.Add(StringArray[i], 0);
+			}
 
 			for (int i = 0; i < phrArray.Length; i++)
 			{
-				if (dict.ContainsKey(phrArray[i].ToLower()))
+				if (res.ContainsKey(phrArray[i]))
 				{
-					dict[phrArray[i]] += 1;
-				}
-				else
-				{
-					dict.Add(phrArray[i], 1);
+					res[phrArray[i]] += 1;
 				}
 			}
-			return dict;
+			return res;
 		}
 	}
 }
