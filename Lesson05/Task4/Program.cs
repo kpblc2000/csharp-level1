@@ -101,6 +101,8 @@ namespace Task4
 			}
 			else
 				Console.WriteLine("Вы не выбрали файл");
+
+			Console.WriteLine("Нажмите любую клавишу");
 			Console.ReadKey();
 		}
 
