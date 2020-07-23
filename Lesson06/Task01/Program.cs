@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace Task01
 {
+	/// <summary>
+	/// Алексей Кулик kpblc2000@gmail.com
+	/// Урок 6, задача 1
+	/// Изменить программу вывода таблицы функции так, чтобы можно было передавать
+	/// функции типа double (double, double). Продемонстрировать работу на функции с функцией a*x^2 и функцией a*sin(x)
+	/// </summary>
 	class Program
 	{
 
@@ -39,12 +45,7 @@ namespace Task01
 		public static double SinX(double a, double Value)
 		{ return a * Math.Sin(Value); }
 
-		/// <summary>
-		/// Алексей Кулик kpblc2000@gmail.com
-		/// Урок 6, задача 1
-		/// Изменить программу вывода таблицы функции так, чтобы можно было передавать
-		/// функции типа double (double, double). Продемонстрировать работу на функции с функцией a*x^2 и функцией a*sin(x)
-		/// </summary>
+		
 		static void Main()
 		{
 			Console.WriteLine("a*x^2");
