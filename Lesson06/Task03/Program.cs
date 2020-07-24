@@ -46,6 +46,11 @@ namespace Task03
 			}
 		}
 
+		public override string ToString()
+		{
+			return $"{_lastName} {_firstName}, {Age}, учится в {City}, {Univercity}, факультет {Department}, курс {_courseNum}";
+		}
+
 		/// <summary>
 		/// Создание экземпляра класса Student
 		/// </summary>
@@ -78,7 +83,7 @@ namespace Task03
 	{
 
 		/// <summary>
-		/// Чтение данных о студентах из csv-файла. Файл должен быть в кодировке UTF-8, первая строка - заголовки, игнорируется. Разделитель столбцов ";".
+		/// Чтение данных о студентах из csv-файла. Файл должен быть в кодировке UTF-8, первая строка - заголовки, игнорируется. Разделитель столбцов ";". Пустые строки не допускаются
 		/// Структура столбцов
 		/// FirstName : string 0
 		/// LastName  : string 1
@@ -132,13 +137,17 @@ namespace Task03
 			if (dlg.ShowDialog() == DialogResult.OK && File.Exists(dlg.FileName))
 			{
 				List<Student> lstStud = ReadFromFile(dlg.FileName);
+
+				Console.WriteLine("Исходный список студентов");
+				StudentsToConsole(lstStud);
+
 				#region а) Подсчитать количество студентов учащихся на 5 и 6 курсах;
 				int stdCount = 0;
 				foreach (Student item in lstStud)
 				{
-					if (item.CourseNum>=5)
+					if (item.CourseNum >= 5)
 					{
-						stdCount +=;
+						stdCount++;
 					}
 				}
 				Console.WriteLine($"Учащихся на 5 и 6 курсах: {stdCount}");
@@ -146,10 +155,72 @@ namespace Task03
 
 				#region б) подсчитать сколько студентов в возрасте от 18 до 20 лет на каком курсе учатся(*частотный массив);
 
-				#endregion	
+				// № курса - количество
+				Dictionary<int, int> dict = new Dictionary<int, int>();
+				foreach (Student item in lstStud)
+				{
+					if (item.Age >= 18 && item.Age <= 20)
+					{
+						if (dict.ContainsKey(item.CourseNum)) dict[item.CourseNum] += 1;
+						else dict.Add(item.CourseNum, 1);
+					}
+				}
+				foreach (var item in dict)
+				{
+					Console.WriteLine($"На {item.Key} курсе учится {item.Value} студентов");
+				}
+				#endregion
+
+				// Чтобы не портить исходный список, для последующих задач скопируем его в новый.
+				List<Student> lstSorting = new List<Student>();
+				foreach (Student item in lstStud)
+				{
+					// Пришлось делать именно так, поскольку с сериализацией не смог разобраться
+					lstSorting.Add(new Student(item.FirstName, item.LastName, item.Univercity, item.Faculty, item.Department, item.CourseNum, item.Age, item.GroupNum, item.City));
+				}
+				#region отсортировать список по возрасту студента;
+
+				Console.WriteLine("\nИсходный список скопирован. Копия :");
+				StudentsToConsole(lstSorting);
+
+				lstSorting.Sort(CompareStudentsByAge);
+				Console.WriteLine("\nСортировка по возрасту : ");
+				StudentsToConsole(lstSorting);
+				#endregion
+
+				#region отсортировать список по курсу и возрасту студента;
+				Console.WriteLine("\nСортировка по курсу и возрасту");
+				lstSorting.Sort(CompareStudentsByCourseAndAge);
+				StudentsToConsole(lstSorting);
+				#endregion
 			}
 			Console.WriteLine("Нажмите на любую клавишу");
 			Console.ReadKey();
+		}
+
+		public static void StudentsToConsole(List<Student> ListToConsole)
+		{
+			foreach (Student item in ListToConsole)
+			{
+				Console.WriteLine(item);
+			}
+		}
+
+		private static int CompareStudentsByCourseAndAge(Student Item1, Student Item2)
+		{
+			int k = 1000;
+			return( Item1.Age + Item1.CourseNum * k) >( Item2.Age + Item2.CourseNum * k) ? 1 : -1;
+		}
+
+		/// <summary>
+		/// Сравнение объектов класса Student по полю  Age (возраст)
+		/// </summary>
+		/// <param name="Item1">Сравниваемый объект</param>
+		/// <param name="Item2">Сравниваемый объект</param>
+		/// <returns>1, если возраст <paramref name="Item1"/> больше <paramref name="Item2"/></returns>
+		private static int CompareStudentsByAge(Student Item1, Student Item2)
+		{
+			return Item1.Age > Item2.Age ? 1 : -1; 
 		}
 	}
 }
