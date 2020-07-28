@@ -6,6 +6,15 @@ using System.Windows.Forms;
 
 namespace Task01
 {
+	/// <summary>
+	/// Алексей Кулик kpblc2000@yandex.ru
+	/// Урок 7, задача 1
+	/// а) Добавить в программу «Удвоитель» подсчёт количества отданных команд удвоителю.
+	/// б) Добавить меню и команду «Играть». При нажатии появляется сообщение, какое число должен получить игрок.Игрок должен получить это число за минимальное количество ходов.
+	/// в) * Добавить кнопку «Отменить», которая отменяет последние ходы.Используйте обобщенный класс Stack.
+	/// Вся логика игры должна быть реализована в классе с удвоителем.
+	/// </summary>
+
 	static class Program
 	{
 		/// <summary>
@@ -18,39 +27,7 @@ namespace Task01
 			Application.SetCompatibleTextRenderingDefault(false);
 
 			frmDoubler frm = new frmDoubler();
-			frm.lblNumber.Text = "0";
 			Application.Run(frm);
 		}
-	}
-
-	public class CDoubler
-	{
-		private int _curValue;
-		private int _plusRange;
-		private int _multiRange;
-
-		public CDoubler()
-		{
-			_curValue = 0;
-			_plusRange = 0;
-			_multiRange = 0;
-		}
-
-		public int Plus()
-		{
-			_curValue += 1;
-			_plusRange += 1;
-			return _curValue;
-		}
-
-		public int Multi()
-		{
-			_curValue = _curValue * 2;
-			_multiRange += 1;
-			return _curValue;
-		}
-
-		public int Value { get { return _curValue; } }
-
 	}
 }

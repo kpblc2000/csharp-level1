@@ -32,12 +32,20 @@
 			this.btnPlus = new System.Windows.Forms.Button();
 			this.btnDouble = new System.Windows.Forms.Button();
 			this.btnOK = new System.Windows.Forms.Button();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.сервисToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuMultiRange = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuPlay = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.lblPlayInfo = new System.Windows.Forms.Label();
+			this.lblPlayNum = new System.Windows.Forms.Label();
+			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// lblNumber
 			// 
 			this.lblNumber.AutoSize = true;
-			this.lblNumber.Location = new System.Drawing.Point(13, 13);
+			this.lblNumber.Location = new System.Drawing.Point(21, 35);
 			this.lblNumber.Name = "lblNumber";
 			this.lblNumber.Size = new System.Drawing.Size(35, 13);
 			this.lblNumber.TabIndex = 0;
@@ -45,7 +53,7 @@
 			// 
 			// btnPlus
 			// 
-			this.btnPlus.Location = new System.Drawing.Point(16, 29);
+			this.btnPlus.Location = new System.Drawing.Point(24, 51);
 			this.btnPlus.Name = "btnPlus";
 			this.btnPlus.Size = new System.Drawing.Size(75, 23);
 			this.btnPlus.TabIndex = 1;
@@ -55,7 +63,7 @@
 			// 
 			// btnDouble
 			// 
-			this.btnDouble.Location = new System.Drawing.Point(16, 58);
+			this.btnDouble.Location = new System.Drawing.Point(24, 80);
 			this.btnDouble.Name = "btnDouble";
 			this.btnDouble.Size = new System.Drawing.Size(75, 23);
 			this.btnDouble.TabIndex = 2;
@@ -75,21 +83,86 @@
 			this.btnOK.UseVisualStyleBackColor = true;
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
 			// 
+			// menuStrip1
+			// 
+			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сервисToolStripMenuItem});
+			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+			this.menuStrip1.Name = "menuStrip1";
+			this.menuStrip1.Size = new System.Drawing.Size(384, 24);
+			this.menuStrip1.TabIndex = 4;
+			this.menuStrip1.Text = "menuStrip1";
+			// 
+			// сервисToolStripMenuItem
+			// 
+			this.сервисToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuMultiRange,
+            this.mnuPlay,
+            this.mnuExit});
+			this.сервисToolStripMenuItem.Name = "сервисToolStripMenuItem";
+			this.сервисToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+			this.сервисToolStripMenuItem.Text = "Сервис";
+			// 
+			// mnuMultiRange
+			// 
+			this.mnuMultiRange.Name = "mnuMultiRange";
+			this.mnuMultiRange.Size = new System.Drawing.Size(233, 22);
+			this.mnuMultiRange.Text = "Количество нажатий на \"x 2\"";
+			this.mnuMultiRange.Click += new System.EventHandler(this.mnuMultiRange_Click);
+			// 
+			// mnuPlay
+			// 
+			this.mnuPlay.Name = "mnuPlay";
+			this.mnuPlay.Size = new System.Drawing.Size(233, 22);
+			this.mnuPlay.Text = "Играть";
+			this.mnuPlay.Click += new System.EventHandler(this.mnuPlay_Click);
+			// 
+			// mnuExit
+			// 
+			this.mnuExit.Name = "mnuExit";
+			this.mnuExit.Size = new System.Drawing.Size(233, 22);
+			this.mnuExit.Text = "Выход";
+			this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
+			// 
+			// lblPlayInfo
+			// 
+			this.lblPlayInfo.AutoSize = true;
+			this.lblPlayInfo.Location = new System.Drawing.Point(24, 110);
+			this.lblPlayInfo.Name = "lblPlayInfo";
+			this.lblPlayInfo.Size = new System.Drawing.Size(167, 13);
+			this.lblPlayInfo.TabIndex = 5;
+			this.lblPlayInfo.Text = "Вам необходимо достичь числа";
+			// 
+			// lblPlayNum
+			// 
+			this.lblPlayNum.AutoSize = true;
+			this.lblPlayNum.Location = new System.Drawing.Point(198, 109);
+			this.lblPlayNum.Name = "lblPlayNum";
+			this.lblPlayNum.Size = new System.Drawing.Size(35, 13);
+			this.lblPlayNum.TabIndex = 6;
+			this.lblPlayNum.Text = "label1";
+			// 
 			// frmDoubler
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(384, 281);
+			this.Controls.Add(this.lblPlayNum);
+			this.Controls.Add(this.lblPlayInfo);
 			this.Controls.Add(this.btnOK);
 			this.Controls.Add(this.btnDouble);
 			this.Controls.Add(this.btnPlus);
 			this.Controls.Add(this.lblNumber);
-			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+			this.Controls.Add(this.menuStrip1);
+			this.MainMenuStrip = this.menuStrip1;
+			this.MaximizeBox = false;
 			this.MaximumSize = new System.Drawing.Size(400, 320);
-			this.MinimumSize = new System.Drawing.Size(200, 0);
+			this.MinimumSize = new System.Drawing.Size(200, 160);
 			this.Name = "frmDoubler";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Удвоитель";
+			this.menuStrip1.ResumeLayout(false);
+			this.menuStrip1.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -101,6 +174,13 @@
 		private System.Windows.Forms.Button btnPlus;
 		private System.Windows.Forms.Button btnDouble;
 		private System.Windows.Forms.Button btnOK;
+		private System.Windows.Forms.MenuStrip menuStrip1;
+		private System.Windows.Forms.ToolStripMenuItem сервисToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem mnuMultiRange;
+		private System.Windows.Forms.ToolStripMenuItem mnuExit;
+		private System.Windows.Forms.Label lblPlayInfo;
+		private System.Windows.Forms.Label lblPlayNum;
+		private System.Windows.Forms.ToolStripMenuItem mnuPlay;
 	}
 }
 
