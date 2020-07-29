@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B7477005-499C-4004-A6E0-946CEC9CE7E5}</ProjectGuid>
+    <ProjectGuid>{17BBC46B-B92F-44AA-972B-80BC33D89B0F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lesson01ex2_bmi</RootNamespace>
-    <AssemblyName>lesson01ex2_bmi</AssemblyName>
+    <RootNamespace>Lesson01Task3</RootNamespace>
+    <AssemblyName>Lesson01Task3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\cKpblc2000.cs">
+    <Compile Include="..\..\cKpblc2000.cs">
       <Link>cKpblc2000.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />

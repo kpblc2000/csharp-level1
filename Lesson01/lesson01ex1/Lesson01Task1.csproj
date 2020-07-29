@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{9091D560-336B-44D0-BD5D-C71C83617935}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>lesson01ex1_profile</RootNamespace>
-    <AssemblyName>lesson01ex1_profile</AssemblyName>
+    <RootNamespace>Lesson01Task1</RootNamespace>
+    <AssemblyName>Lesson01Task1</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,7 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\cKpblc2000.cs">
+    <Compile Include="..\..\cKpblc2000.cs">
       <Link>cKpblc2000.cs</Link>
     </Compile>
     <Compile Include="Program.cs" />

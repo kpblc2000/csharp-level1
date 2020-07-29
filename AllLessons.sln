@@ -5,11 +5,11 @@ VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Lesson01", "Lesson01", "{6D8A5F0F-EB51-4116-976F-C6F1B95735FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson01ex1_profile", "Lesson01\lesson01ex1\lesson01ex1_profile.csproj", "{9091D560-336B-44D0-BD5D-C71C83617935}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson01Task1", "Lesson01\lesson01ex1\Lesson01Task1.csproj", "{9091D560-336B-44D0-BD5D-C71C83617935}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson01ex2_bmi", "Lesson01\lesson01ex2_bmi\lesson01ex2_bmi.csproj", "{B7477005-499C-4004-A6E0-946CEC9CE7E5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson01Task2", "Lesson01\lesson01ex2_bmi\Lesson01Task2.csproj", "{B7477005-499C-4004-A6E0-946CEC9CE7E5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson01ex3_dist", "Lesson01\lesson01ex03\lesson01ex3_dist.csproj", "{17BBC46B-B92F-44AA-972B-80BC33D89B0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson01Task3", "Lesson01\lesson01ex03\Lesson01Task3.csproj", "{17BBC46B-B92F-44AA-972B-80BC33D89B0F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lesson01ex4_swap", "Lesson01\lesson01ex4_swap\lesson01ex4_swap.csproj", "{637802F4-DD34-4964-B781-FC14001CC4AF}"
 EndProject

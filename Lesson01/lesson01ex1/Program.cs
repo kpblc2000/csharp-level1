@@ -2,7 +2,7 @@
 using System.Globalization;
 using kpblc2000;
 
-namespace lesson01ex1
+namespace Lesson01Task1
 {
 	class Program
 	{

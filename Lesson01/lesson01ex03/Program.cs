@@ -1,7 +1,7 @@
 ﻿using kpblc2000;
 using System;
 
-namespace lesson01ex3_dist
+namespace Lesson01Task3
 {
     class Program
     {

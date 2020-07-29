@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using kpblc2000;
 
-namespace lesson01ex2_bmi
+namespace Lesson01Task2
 {
     class Program
     {
