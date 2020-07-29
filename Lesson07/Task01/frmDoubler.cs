@@ -23,30 +23,50 @@ namespace Task01
 			lblUserSteps.Visible = false;
 		}
 
+		/// <summary>
+		/// Выполняет изменение интерфейса окна, при необходимости блокирует кнопки
+		/// </summary>
+		/// <param name="CurrentValue">Текущее значение сравниваемой переменной</param>
+		/// <param name="ExpextedValue">Значение, которое не должно быть превышено</param>
 		private void FillLabelNumExpand(int CurrentValue, int ExpextedValue)
 		{
 			string msg = "";
 			bool playContinue = true;
 			if (CurrentValue > ExpextedValue)
-			{ msg = "Err!"; playContinue = false; }
+			{
+				msg = "Err!";
+				playContinue = false;
+			}
 			else if (CurrentValue == ExpextedValue)
-			{ msg = "You won!"; playContinue = false; }
-			else msg = $"Ваше текущее число: {ExpextedValue.ToString()}";
+			{
+				msg = "Вы выиграли!";
+				playContinue = false;
+			}
+			else msg = $"Ваше текущее число: {CurrentValue.ToString()}";
+
 			btnDouble.Enabled = playContinue;
 			btnPlus.Enabled = playContinue;
+
 			lblNumber.Text = msg;
+
+			if (CDoubler.IsInPlayMode)
+			{
+				lblPlayNum.Text = CDoubler.GetValueForPlay.ToString();
+				lblMinSteps.Text = $"Этого можно достичь за {CDoubler.GetMinimumSteps} действий";
+				lblUserSteps.Text = $"Вы выполнили {CDoubler.GetUserSteps} действий";
+			}
 		}
 
 		private void btnPlus_Click(object sender, EventArgs e)
 		{
-			FillLabelNumExpand(CDoubler.Value, CDoubler.Value + 1);
 			CDoubler.Plus();
+			FillLabelNumExpand(CDoubler.Value, CDoubler.IsInPlayMode ? CDoubler.GetValueForPlay : int.MaxValue);
 		}
 
 		private void btnDouble_Click(object sender, EventArgs e)
 		{
-			FillLabelNumExpand(CDoubler.Value, CDoubler.Value * 2);
 			CDoubler.Multi();
+			FillLabelNumExpand(CDoubler.Value, CDoubler.IsInPlayMode ? CDoubler.GetValueForPlay : int.MaxValue);
 		}
 
 		private void btnOK_Click(object sender, EventArgs e)
@@ -67,14 +87,17 @@ namespace Task01
 		private void mnuPlay_Click(object sender, EventArgs e)
 		{
 			CDoubler.RandomInitialize();
-			lblNumber.Text = CDoubler.Value.ToString();
+
+			FillLabelNumExpand( CDoubler.Value, int.MaxValue);
+
 			lblPlayInfo.Visible = true;
 			lblPlayNum.Visible = true;
-			lblPlayNum.Text = CDoubler.GetValueForPlay.ToString();
-			lblMinSteps.Text = $"Этого можно достичь за {CDoubler.GetMinimumSteps} действий";
+
 			lblMinSteps.Visible = true;
-			lblUserSteps.Text = $"Вы выполнили {CDoubler.GetUserSteps} действий";
+
 			lblUserSteps.Visible = true;
+
+
 		}
 	}
 }
