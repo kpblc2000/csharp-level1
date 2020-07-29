@@ -39,6 +39,8 @@
 			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.lblPlayInfo = new System.Windows.Forms.Label();
 			this.lblPlayNum = new System.Windows.Forms.Label();
+			this.lblMinSteps = new System.Windows.Forms.Label();
+			this.lblUserSteps = new System.Windows.Forms.Label();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -142,11 +144,31 @@
 			this.lblPlayNum.TabIndex = 6;
 			this.lblPlayNum.Text = "label1";
 			// 
+			// lblMinSteps
+			// 
+			this.lblMinSteps.AutoSize = true;
+			this.lblMinSteps.Location = new System.Drawing.Point(24, 160);
+			this.lblMinSteps.Name = "lblMinSteps";
+			this.lblMinSteps.Size = new System.Drawing.Size(35, 13);
+			this.lblMinSteps.TabIndex = 7;
+			this.lblMinSteps.Text = "label1";
+			// 
+			// lblUserSteps
+			// 
+			this.lblUserSteps.AutoSize = true;
+			this.lblUserSteps.Location = new System.Drawing.Point(24, 133);
+			this.lblUserSteps.Name = "lblUserSteps";
+			this.lblUserSteps.Size = new System.Drawing.Size(35, 13);
+			this.lblUserSteps.TabIndex = 8;
+			this.lblUserSteps.Text = "label1";
+			// 
 			// frmDoubler
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(384, 281);
+			this.Controls.Add(this.lblUserSteps);
+			this.Controls.Add(this.lblMinSteps);
 			this.Controls.Add(this.lblPlayNum);
 			this.Controls.Add(this.lblPlayInfo);
 			this.Controls.Add(this.btnOK);
@@ -181,6 +203,8 @@
 		private System.Windows.Forms.Label lblPlayInfo;
 		private System.Windows.Forms.Label lblPlayNum;
 		private System.Windows.Forms.ToolStripMenuItem mnuPlay;
+		private System.Windows.Forms.Label lblMinSteps;
+		private System.Windows.Forms.Label lblUserSteps;
 	}
 }
 

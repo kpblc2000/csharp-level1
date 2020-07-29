@@ -18,7 +18,9 @@ namespace Task01
 			InitializeComponent();
 			lblPlayInfo.Visible = false;
 			lblPlayNum.Visible = false;
-			lblNumber.Text = CDoubler.Value.ToString();
+			lblNumber.Text = $"Ваше текущее число: {CDoubler.Value.ToString()}";
+			lblMinSteps.Visible = false;
+			lblUserSteps.Visible = false;
 		}
 
 		private void FillLabelNumExpand(int CurrentValue, int ExpextedValue)
@@ -29,7 +31,7 @@ namespace Task01
 			{ msg = "Err!"; playContinue = false; }
 			else if (CurrentValue == ExpextedValue)
 			{ msg = "You won!"; playContinue = false; }
-			else msg = ExpextedValue.ToString();
+			else msg = $"Ваше текущее число: {ExpextedValue.ToString()}";
 			btnDouble.Enabled = playContinue;
 			btnPlus.Enabled = playContinue;
 			lblNumber.Text = msg;
@@ -69,6 +71,10 @@ namespace Task01
 			lblPlayInfo.Visible = true;
 			lblPlayNum.Visible = true;
 			lblPlayNum.Text = CDoubler.GetValueForPlay.ToString();
+			lblMinSteps.Text = $"Этого можно достичь за {CDoubler.GetMinimumSteps} действий";
+			lblMinSteps.Visible = true;
+			lblUserSteps.Text = $"Вы выполнили {CDoubler.GetUserSteps} действий";
+			lblUserSteps.Visible = true;
 		}
 	}
 }
