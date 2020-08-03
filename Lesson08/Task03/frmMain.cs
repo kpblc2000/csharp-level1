@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,136 +13,94 @@ namespace Task03
 {
 	public partial class frmMain : Form
 	{
-		ListQuestion dataBase;
-		bool dbModified;
+		// ListQuestion dataBase;
+		TrueFalse database;
+		string MainTitle = "Верю-не верю : ";
 
 		public frmMain()
 		{
-			dbModified = false;
 			InitializeComponent();
-		}
-
-		private void mnuExit_Click(object sender, EventArgs e)
-		{
-			Close();
+			this.Text = MainTitle;
 		}
 
 		private void mnuNewFile_Click(object sender, EventArgs e)
 		{
-
-			#region Запрос на сохранение текущей БД
-			SaveOnDemand();
-			#endregion
-
-			if (dataBase == null || !dbModified)
+			SaveFileDialog sfd = new SaveFileDialog();
+			if (sfd.ShowDialog() == DialogResult.OK)
 			{
-
-				SaveFileDialog dlg = new SaveFileDialog();
-				dlg.Title = "Открыть БД из файла";
-				dlg.Filter = "xml|*.xml";
-				if (dlg.ShowDialog() == DialogResult.OK)
-				{
-					dataBase = new ListQuestion(dlg.FileName);
-					dataBase.Save();
-					ModifyNumCounter();
-				}
-			}
-
-		}
-
-		private void mnuOpenFile_Click(object sender, EventArgs e)
-		{
-			SaveOnDemand();
-			OpenFileDialog dlg = new OpenFileDialog();
-			dlg.Filter = "XML-файлы (*.xml)|*.xml";
-			dlg.Title = "Открыть имеющуюся БД";
-			if (dlg.ShowDialog() == DialogResult.OK)
-			{
-				dataBase = new ListQuestion(dlg.FileName);
-				this.Text = dataBase.FileName;
-				dbModified = false;
-			}
-		}
-
-		private void ModifyNumCounter()
-		{
-			numCounter.Minimum = 1;
-			numCounter.Maximum = 1 + dataBase.Count;
-		}
-
-		private void SaveOnDemand()
-		{
-			string titleMsgBox = "Создание новой БД";
-			if (dataBase != null)
-			{
-				if (dbModified)
-				{
-					if (MessageBox.Show("БД изменена. Сохранять изменения", titleMsgBox, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-					{
-						if (dataBase.Save())
-						{
-							dataBase = null;
-							dbModified = false;
-						}
-					}
-				}
+				database = new TrueFalse(sfd.FileName);
+				database.Add("123", true);
+				database.Save();
+				nudNumber.Minimum = 1;
+				nudNumber.Maximum = 1;
+				nudNumber.Value = 1;
+				this.Text = MainTitle+ database.FileName;
 			}
 
 		}
 
 		private void numCounter_ValueChanged(object sender, EventArgs e)
 		{
-			if (dataBase.Count > 0 && (int)numCounter.Value <= dataBase.Count)
-			{
-				textQuest.Text = dataBase[(int)numCounter.Value - 1].QuestionText;
-				chkIsTrue.Checked = dataBase[(int)numCounter.Value - 1].CorrectAnswer;
-			}
-		}
-
-		private void chkIsTrue_CheckedChanged(object sender, EventArgs e)
-		{
+			textQuest.Text = database[(int)nudNumber.Value - 1].text;
+			chkIsTrue.Checked = database[(int)nudNumber.Value - 1].trueFalse;
 		}
 
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			if (dataBase == null)
+			if (database == null)
 			{
-				MessageBox.Show("Сначала создайте БД", "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MessageBox.Show("Создайте новую базу данных", "Сообщение");
 				return;
 			}
-			dataBase.Add(textQuest.Text, chkIsTrue.Checked);
-			ModifyNumCounter();
-			numCounter.Value = (int)dataBase.Count;
+			database.Add((database.Count + 1).ToString(), true);
+			nudNumber.Maximum = database.Count;
+			nudNumber.Value = database.Count;
 			textQuest.Text = "";
 			chkIsTrue.Checked = false;
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
+		private void btnRemove_Click(object sender, EventArgs e)
 		{
-			if (dataBase != null)
-			{
-				dataBase.Save();
-			}
+			if (nudNumber.Maximum == 1 || database == null) return;
+			database.Remove((int)nudNumber.Value);
+			nudNumber.Maximum--;
+			if (nudNumber.Value > 1) nudNumber.Value = nudNumber.Value;
 		}
 
 		private void mnuSaveFile_Click(object sender, EventArgs e)
 		{
-			if (dataBase != null)
-			{
-				dataBase.Save();
-			}
+			if (database != null) database.Save();
+			else MessageBox.Show("База данных не создана");
+
 		}
 
-		//private bool SaveDB()
-		//{
-		//	bool res;
-		//	SaveFileDialog dlg = new SaveFileDialog();
-		//	dlg.Title = "Запись БД";
-		//	dlg.Filter = "Файлы xml|(*.xml)";
-		//	if (dlg.ShowDialog() == DialogResult.OK)
-		//	{
+		private void mnuOpenFile_Click(object sender, EventArgs e)
+		{
+			OpenFileDialog ofd = new OpenFileDialog();
+			#region Защита от несуществующего файла
+			if (ofd.ShowDialog() == DialogResult.OK && File.Exists(ofd.FileName))
+			{
+				try
+				{
+					database = new TrueFalse(ofd.FileName);
+					database.Load();
+					nudNumber.Minimum = 1;
+					nudNumber.Maximum = Math.Max(database.Count, 1);
+					nudNumber.Value = 1;
+				}
+				catch (Exception ex)
+				{
+					MessageBox.Show($"Ошибка открытия БД:\n{ex.Message}", "Открытие БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				}
+				this.Text = MainTitle +  database.FileName;
+			}
+			#endregion
+		}
 
-		//	}
-		//}
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			database[(int)nudNumber.Value - 1].text = textQuest.Text;
+			database[(int)nudNumber.Value - 1].trueFalse = chkIsTrue.Checked;
+		}
 	}
 }

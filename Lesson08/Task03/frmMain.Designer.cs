@@ -33,16 +33,16 @@
 			this.mnuNewFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuOpenFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.mnuSaveFile = new System.Windows.Forms.ToolStripMenuItem();
-			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnRemove = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
-			this.numCounter = new System.Windows.Forms.NumericUpDown();
+			this.nudNumber = new System.Windows.Forms.NumericUpDown();
 			this.chkIsTrue = new System.Windows.Forms.CheckBox();
 			this.textQuest = new System.Windows.Forms.TextBox();
 			this.menuStrip1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numCounter)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudNumber)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// menuStrip1
@@ -88,22 +88,21 @@
 			this.mnuSaveFile.Text = "Сохранить...";
 			this.mnuSaveFile.Click += new System.EventHandler(this.mnuSaveFile_Click);
 			// 
-			// mnuExit
-			// 
-			this.mnuExit.Name = "mnuExit";
-			this.mnuExit.Size = new System.Drawing.Size(180, 22);
-			this.mnuExit.Text = "Выход";
-			this.mnuExit.Click += new System.EventHandler(this.mnuExit_Click);
-			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
 			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
 			// 
+			// mnuExit
+			// 
+			this.mnuExit.Name = "mnuExit";
+			this.mnuExit.Size = new System.Drawing.Size(180, 22);
+			this.mnuExit.Text = "Выход";
+			// 
 			// btnAdd
 			// 
-			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnAdd.Location = new System.Drawing.Point(335, 416);
+			this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnAdd.Location = new System.Drawing.Point(253, 416);
 			this.btnAdd.Name = "btnAdd";
 			this.btnAdd.Size = new System.Drawing.Size(177, 23);
 			this.btnAdd.TabIndex = 4;
@@ -113,33 +112,34 @@
 			// 
 			// btnRemove
 			// 
-			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnRemove.Location = new System.Drawing.Point(518, 416);
+			this.btnRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnRemove.Location = new System.Drawing.Point(436, 416);
 			this.btnRemove.Name = "btnRemove";
 			this.btnRemove.Size = new System.Drawing.Size(189, 23);
 			this.btnRemove.TabIndex = 5;
 			this.btnRemove.Text = "Удалить вопрос";
 			this.btnRemove.UseVisualStyleBackColor = true;
+			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
 			// btnSave
 			// 
-			this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.btnSave.Location = new System.Drawing.Point(713, 416);
+			this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnSave.Location = new System.Drawing.Point(631, 416);
 			this.btnSave.Name = "btnSave";
-			this.btnSave.Size = new System.Drawing.Size(75, 23);
+			this.btnSave.Size = new System.Drawing.Size(157, 23);
 			this.btnSave.TabIndex = 6;
-			this.btnSave.Text = "Сохранить...";
+			this.btnSave.Text = "Сохранить вопрос";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
-			// numCounter
+			// nudNumber
 			// 
-			this.numCounter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.numCounter.Location = new System.Drawing.Point(83, 415);
-			this.numCounter.Name = "numCounter";
-			this.numCounter.Size = new System.Drawing.Size(120, 20);
-			this.numCounter.TabIndex = 50;
-			this.numCounter.ValueChanged += new System.EventHandler(this.numCounter_ValueChanged);
+			this.nudNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.nudNumber.Location = new System.Drawing.Point(83, 415);
+			this.nudNumber.Name = "nudNumber";
+			this.nudNumber.Size = new System.Drawing.Size(120, 20);
+			this.nudNumber.TabIndex = 50;
+			this.nudNumber.ValueChanged += new System.EventHandler(this.numCounter_ValueChanged);
 			// 
 			// chkIsTrue
 			// 
@@ -151,7 +151,6 @@
 			this.chkIsTrue.TabIndex = 2;
 			this.chkIsTrue.Text = "Правда";
 			this.chkIsTrue.UseVisualStyleBackColor = true;
-			this.chkIsTrue.CheckedChanged += new System.EventHandler(this.chkIsTrue_CheckedChanged);
 			// 
 			// textQuest
 			// 
@@ -171,17 +170,18 @@
 			this.ClientSize = new System.Drawing.Size(800, 450);
 			this.Controls.Add(this.textQuest);
 			this.Controls.Add(this.chkIsTrue);
-			this.Controls.Add(this.numCounter);
+			this.Controls.Add(this.nudNumber);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.btnRemove);
 			this.Controls.Add(this.btnAdd);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
+			this.MinimumSize = new System.Drawing.Size(816, 489);
 			this.Name = "frmMain";
 			this.Text = "Form1";
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.numCounter)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.nudNumber)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -199,7 +199,7 @@
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnRemove;
 		private System.Windows.Forms.Button btnSave;
-		private System.Windows.Forms.NumericUpDown numCounter;
+		private System.Windows.Forms.NumericUpDown nudNumber;
 		private System.Windows.Forms.CheckBox chkIsTrue;
 		private System.Windows.Forms.TextBox textQuest;
 	}
