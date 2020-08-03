@@ -35,7 +35,7 @@ namespace Task03
 				nudNumber.Minimum = 1;
 				nudNumber.Maximum = 1;
 				nudNumber.Value = 1;
-				this.Text = MainTitle+ database.FileName;
+				this.Text = MainTitle + database.FileName;
 			}
 
 		}
@@ -93,7 +93,7 @@ namespace Task03
 				{
 					MessageBox.Show($"Ошибка открытия БД:\n{ex.Message}", "Открытие БД", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				}
-				this.Text = MainTitle +  database.FileName;
+				this.Text = MainTitle + database.FileName;
 			}
 			#endregion
 		}
@@ -107,6 +107,20 @@ namespace Task03
 		private void mnuAbout_Click(object sender, EventArgs e)
 		{
 			MessageBox.Show($"Игра \"Верю-не верю\"\nавтор: Алексей Кулик\ne-mail kpblc2000@yandex.ru\n\nВерсия:{Assembly.GetExecutingAssembly().GetName().Version.ToString()}", "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
+		}
+
+		private void mnuSaveAs_Click(object sender, EventArgs e)
+		{
+			if (database != null)
+			{
+				SaveFileDialog dlg = new SaveFileDialog();
+				dlg.Title = "Сохранение БД в другой файл";
+				dlg.Filter = "Файлы XML|*.xml";
+				if (dlg.ShowDialog() == DialogResult.OK)
+				{
+					database.SaveAs(dlg.FileName);
+				}
+			}
 		}
 	}
 }
