@@ -17,7 +17,7 @@
     <trueFalse>true</trueFalse>
   </Question>
   <Question>
-    <text />
+    <text>asdf</text>
     <trueFalse>false</trueFalse>
   </Question>
 </ArrayOfQuestion>
