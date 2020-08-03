@@ -35,6 +35,7 @@
 			this.mnuSaveFile = new System.Windows.Forms.ToolStripMenuItem();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.mnuExit = new System.Windows.Forms.ToolStripMenuItem();
+			this.mnuAbout = new System.Windows.Forms.ToolStripMenuItem();
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnRemove = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
@@ -48,7 +49,8 @@
 			// menuStrip1
 			// 
 			this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile});
+            this.mnuFile,
+            this.mnuAbout});
 			this.menuStrip1.Location = new System.Drawing.Point(0, 0);
 			this.menuStrip1.Name = "menuStrip1";
 			this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -70,34 +72,41 @@
 			// mnuNewFile
 			// 
 			this.mnuNewFile.Name = "mnuNewFile";
-			this.mnuNewFile.Size = new System.Drawing.Size(180, 22);
+			this.mnuNewFile.Size = new System.Drawing.Size(144, 22);
 			this.mnuNewFile.Text = "Новый файл";
 			this.mnuNewFile.Click += new System.EventHandler(this.mnuNewFile_Click);
 			// 
 			// mnuOpenFile
 			// 
 			this.mnuOpenFile.Name = "mnuOpenFile";
-			this.mnuOpenFile.Size = new System.Drawing.Size(180, 22);
+			this.mnuOpenFile.Size = new System.Drawing.Size(144, 22);
 			this.mnuOpenFile.Text = "Открыть...";
 			this.mnuOpenFile.Click += new System.EventHandler(this.mnuOpenFile_Click);
 			// 
 			// mnuSaveFile
 			// 
 			this.mnuSaveFile.Name = "mnuSaveFile";
-			this.mnuSaveFile.Size = new System.Drawing.Size(180, 22);
+			this.mnuSaveFile.Size = new System.Drawing.Size(144, 22);
 			this.mnuSaveFile.Text = "Сохранить...";
 			this.mnuSaveFile.Click += new System.EventHandler(this.mnuSaveFile_Click);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
 			// 
 			// mnuExit
 			// 
 			this.mnuExit.Name = "mnuExit";
-			this.mnuExit.Size = new System.Drawing.Size(180, 22);
+			this.mnuExit.Size = new System.Drawing.Size(144, 22);
 			this.mnuExit.Text = "Выход";
+			// 
+			// mnuAbout
+			// 
+			this.mnuAbout.Name = "mnuAbout";
+			this.mnuAbout.Size = new System.Drawing.Size(94, 20);
+			this.mnuAbout.Text = "О программе";
+			this.mnuAbout.Click += new System.EventHandler(this.mnuAbout_Click);
 			// 
 			// btnAdd
 			// 
@@ -202,6 +211,7 @@
 		private System.Windows.Forms.NumericUpDown nudNumber;
 		private System.Windows.Forms.CheckBox chkIsTrue;
 		private System.Windows.Forms.TextBox textQuest;
+		private System.Windows.Forms.ToolStripMenuItem mnuAbout;
 	}
 }
 

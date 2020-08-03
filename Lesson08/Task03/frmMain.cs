@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -101,6 +102,11 @@ namespace Task03
 		{
 			database[(int)nudNumber.Value - 1].text = textQuest.Text;
 			database[(int)nudNumber.Value - 1].trueFalse = chkIsTrue.Checked;
+		}
+
+		private void mnuAbout_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show($"Игра \"Верю-не верю\"\nавтор: Алексей Кулик\ne-mail kpblc2000@yandex.ru\n\nВерсия:{Assembly.GetExecutingAssembly().GetName().Version.ToString()}", "О программе", MessageBoxButtons.OK, MessageBoxIcon.Information);
 		}
 	}
 }
